@@ -5,13 +5,11 @@ This repository defines an example of a Docker extension. The files in this repo
 This extension is composed of:
 
 - A [frontend](./ui) app in React that makes a request to the `/hello` endpoint and displays the payload in Docker Desktop.
-- A [backend](./backend) container that runs an API in Go. It exposes the `/hello` endpoint which returns a JSON payload.
 
 > You can build your Docker Extension using your fav tech stack:
 >
 > - Frontend: React, Angular, Vue, Svelte, etc.
 >   Basically, any frontend framework you can bundle in an `index.html` file with CSS, and JS assets.
-> - Backend (optional): anything that can run in a container.
 
 <details>
   <summary>Looking for more templates?</summary>
@@ -73,23 +71,6 @@ Each subsequent click on the extension tab will also open Chrome Dev Tools. To s
 ```shell
   docker extension dev reset julian-B90/tachometer:latest
 ```
-
-### Backend development (optional)
-
-This example defines an API in Go that is deployed as a backend container when the extension is installed. This backend could be implemented in any language, as it runs inside a container. The extension frameworks provides connectivity from the extension UI to a socket that the backend has to connect to on the server side.
-
-Note that an extension doesn't necessarily need a backend container, but in this example we include one for teaching purposes.
-
-Whenever you make changes in the [backend](./backend) source code, you will need to compile them and re-deploy a new version of your backend container.
-Use the `docker extension update` command to remove and re-install the extension automatically:
-
-```shell
-docker extension update julian-B90/tachometer:latest
-```
-
-> If you want to automate this command, use the `-f` or `--force` flag to accept the warning message.
-
-> Extension containers are hidden from the Docker Dashboard by default. You can change this in Settings > Extensions > Show Docker Extensions system containers.
 
 ### Clean up
 
