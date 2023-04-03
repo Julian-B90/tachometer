@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:18.12-alpine3.16 AS client-builder
+FROM --platform=$BUILDPLATFORM node:18.15-buster AS client-builder
 WORKDIR /ui
 # cache packages in layer
 COPY ui/package.json /ui/package.json
@@ -12,14 +12,15 @@ RUN npm run build
 
 FROM alpine
 LABEL org.opencontainers.image.title="Tachometer" \
-    org.opencontainers.image.description="My awesome Docker extension" \
-    org.opencontainers.image.vendor="Awesome Inc." \
+    org.opencontainers.image.description="Extension shows real-time cpu and memory usage of containers" \
+    org.opencontainers.image.vendor="julian-b90" \
     com.docker.desktop.extension.api.version="0.3.4" \
     com.docker.extension.screenshots="" \
-    com.docker.extension.detailed-description="" \
-    com.docker.extension.publisher-url="" \
-    com.docker.extension.additional-urls="" \
-    com.docker.extension.changelog=""
+    com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
+    com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
+    com.docker.extension.additional-urls=[{"title":"Issues","url":"https://github.com/Julian-B90/tachometer/issues"}] \
+    com.docker.extension.changelog="" \
+    com.docker.extension.categories="development,utility-tools"
 
 COPY docker-compose.yaml .
 COPY metadata.json .
