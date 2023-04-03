@@ -39,7 +39,7 @@ const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
                     CPU
                   </TableCell>
                   <TableCell>
-                    <LinearProgressWithLabel value={parseFloat(item?.CPUPerc)} perc={item?.CPUPerc} />
+                    <LinearProgressWithLabel value={parseFloat(item?.CPUPerc)} />
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -47,7 +47,7 @@ const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
                     MemPerc
                   </TableCell>
                   <TableCell>
-                    <LinearProgressWithLabel value={parseFloat(item?.MemPerc, 10)} perc={item?.MemPerc} />
+                    <LinearProgressWithLabel value={parseFloat(item?.MemPerc)} />
                   </TableCell>
                 </TableRow>
                 <TableRow>
