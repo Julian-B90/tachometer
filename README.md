@@ -28,13 +28,13 @@ You can use `docker` to build, install and push your extension. Also, we provide
 To build the extension, use `make build-extension` **or**:
 
 ```shell
-  docker buildx build -t julian-B90/tachometer:latest . --load
+  docker buildx build -t julian-b90/tachometer:latest . --load
 ```
 
 To install the extension, use `make install-extension` **or**:
 
 ```shell
-  docker extension install julian-B90/tachometer:latest
+  docker extension install julian-b90/tachometer:latest
 ```
 
 > If you want to automate this command, use the `-f` or `--force` flag to accept the warning message.
@@ -57,19 +57,19 @@ This starts a development server that listens on port `3000`.
 You can now tell Docker Desktop to use this as the frontend source. In another terminal run:
 
 ```shell
-  docker extension dev ui-source julian-B90/tachometer:latest http://localhost:3000
+  docker extension dev ui-source julian-b90/tachometer:latest http://localhost:3000
 ```
 
 In order to open the Chrome Dev Tools for your extension when you click on the extension tab, run:
 
 ```shell
-  docker extension dev debug julian-B90/tachometer:latest
+  docker extension dev debug julian-b90/tachometer:latest
 ```
 
 Each subsequent click on the extension tab will also open Chrome Dev Tools. To stop this behaviour, run:
 
 ```shell
-  docker extension dev reset julian-B90/tachometer:latest
+  docker extension dev reset julian-b90/tachometer:latest
 ```
 
 ### Clean up
@@ -77,7 +77,7 @@ Each subsequent click on the extension tab will also open Chrome Dev Tools. To s
 To remove the extension:
 
 ```shell
-docker extension rm julian-B90/tachometer:latest
+docker extension rm julian-b90/tachometer:latest
 ```
 
 ## What's next?
