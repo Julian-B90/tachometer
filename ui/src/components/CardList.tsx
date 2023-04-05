@@ -7,7 +7,7 @@ import {
   TableCell,
   TableRow,
   Tooltip,
-  Typography
+  Typography,
 } from "@mui/material";
 import { DockerStats } from "../App";
 import LinearProgressWithLabel from "./LinearProgressWithLabel";
@@ -39,7 +39,9 @@ const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
                     CPU
                   </TableCell>
                   <TableCell>
-                    <LinearProgressWithLabel value={parseFloat(item?.CPUPerc)} />
+                    <LinearProgressWithLabel
+                      value={parseFloat(item?.CPUPerc)}
+                    />
                   </TableCell>
                 </TableRow>
                 <TableRow>
@@ -47,7 +49,9 @@ const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
                     MemPerc
                   </TableCell>
                   <TableCell>
-                    <LinearProgressWithLabel value={parseFloat(item?.MemPerc)} />
+                    <LinearProgressWithLabel
+                      value={parseFloat(item?.MemPerc)}
+                    />
                   </TableCell>
                 </TableRow>
                 <TableRow>

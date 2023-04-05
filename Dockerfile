@@ -14,11 +14,12 @@ FROM alpine
 LABEL org.opencontainers.image.title="Tachometer" \
     org.opencontainers.image.description="Extension shows real-time cpu and memory usage of containers" \
     org.opencontainers.image.vendor="julian-b90" \
+    com.docker.extension.screenshots='[{"alt":"tachometer", "url":"https://raw.githubusercontent.com/julian-b90/tachometer/main/screenshot.png"}]' \
     com.docker.desktop.extension.api.version="0.3.4" \
-    com.docker.desktop.extension.icon="https://raw.githubusercontent.com/Julian-B90/tachometer/main/speedometer.png" \
+    com.docker.desktop.extension.icon="https://raw.githubusercontent.com/julian-b90/tachometer/main/speedometer.png" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
     com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
-    com.docker.extension.additional-urls=[{"title":"Issues","url":"https://github.com/Julian-B90/tachometer/issues"}] \
+    com.docker.extension.additional-urls='[{"title":"Issues","url":"https://github.com/julian-b90/tachometer/issues"}]' \
     com.docker.extension.changelog="" \
     com.docker.extension.categories="development,utility-tools"
 

@@ -63,12 +63,24 @@ export function App() {
   return (
     <>
       {!response && (
-        <Stack sx={{height: "100vh"}} direction="column" alignItems="center" justifyContent="center">
+        <Stack
+          sx={{ height: "100vh" }}
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+        >
           <CircularProgress />
         </Stack>
       )}
       {response && (
-        <Stack direction="row" alignItems="start" spacing={2} sx={{ mt: 4 }}>
+        <Stack
+          direction="row"
+          alignItems="start"
+          spacing={2}
+          sx={{ mt: 4 }}
+          useFlexGap
+          flexWrap="wrap"
+        >
           <CardList dockerStats={response} />
         </Stack>
       )}
