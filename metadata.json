@@ -1,5 +1,5 @@
 {
-  "icon": "docker.svg",
+  "icon": "speedometer.svg",
   "ui": {
     "dashboard-tab": {
       "title": "Tachometer",
