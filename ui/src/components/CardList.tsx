@@ -17,7 +17,6 @@ interface CardListPorps {
 }
 
 const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
-  console.log("dockerStats", dockerStats);
 
   return (
     <>
