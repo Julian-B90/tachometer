@@ -76,6 +76,7 @@ export function App() {
         <Stack
           direction="row"
           alignItems="start"
+          justifyContent="center"
           spacing={2}
           sx={{ mt: 4 }}
           useFlexGap
