@@ -2,12 +2,14 @@ import {
   Card,
   CardContent,
   LinearProgress,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableRow,
   Tooltip,
   Typography,
+  makeStyles,
 } from "@mui/material";
 import { DockerStats } from "../App";
 import LinearProgressWithLabel from "./LinearProgressWithLabel";
@@ -17,11 +19,10 @@ interface CardListPorps {
 }
 
 const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
-
   return (
     <>
       {dockerStats?.map((item) => (
-        <Card key={item.ID} sx={{ width: 350 }}>
+        <Card key={item.ID} sx={{flex: "1 1 350px"}}>
           <CardContent>
             <Typography noWrap sx={{ fontSize: 14 }} color="text.secondary">
               Container: {item?.Container}
@@ -31,10 +32,10 @@ const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
                 {item?.Name}
               </Typography>
             </Tooltip>
-            <Table border={0}>
+            <Table component={Paper} sx={{border: "none"}}>
               <TableBody>
                 <TableRow>
-                  <TableCell component="th" scope="row">
+                  <TableCell component="th" scope="row" width={30}>
                     CPU
                   </TableCell>
                   <TableCell>
@@ -44,7 +45,7 @@ const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
+                  <TableCell component="th" scope="row" width={30}>
                     MemPerc
                   </TableCell>
                   <TableCell>
@@ -54,25 +55,25 @@ const CardList: React.FC<CardListPorps> = ({ dockerStats }) => {
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
+                  <TableCell component="th" scope="row" width={30}>
                     MemUsage
                   </TableCell>
                   <TableCell>{item?.MemUsage}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
+                  <TableCell component="th" scope="row" width={30}>
                     BlockIO
                   </TableCell>
                   <TableCell>{item?.BlockIO}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
+                  <TableCell component="th" scope="row" width={30}>
                     NetIO
                   </TableCell>
                   <TableCell>{item?.NetIO}</TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell component="th" scope="row">
+                  <TableCell component="th" scope="row" width={30}>
                     PIDs
                   </TableCell>
                   <TableCell>{item?.PIDs}</TableCell>
