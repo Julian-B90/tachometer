@@ -10,7 +10,7 @@ RUN --mount=type=cache,target=/usr/src/app/.npm \
 COPY ui /ui
 RUN npm run build
 
-FROM alpine
+FROM istio/distroless
 LABEL org.opencontainers.image.title="Tachometer" \
     org.opencontainers.image.description="Extension shows real-time cpu and memory usage of containers" \
     org.opencontainers.image.vendor="julian-b90" \
