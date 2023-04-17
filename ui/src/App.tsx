@@ -1,14 +1,15 @@
 import { createDockerDesktopClient } from "@docker/extension-api-client";
 import { CircularProgress, Stack } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import CardList from "./components/CardList";
 
 // Note: This line relies on Docker Desktop's presence as a host application.
 // If you're running this React app in a browser, it won't work properly.
-const client = createDockerDesktopClient();
+const useCreateDockerDesktopClient = () => useMemo(() => createDockerDesktopClient(), []);
 
-function useDockerDesktopClient() {
-  return client;
+const useDockerDesktopClient = () => {
+  const client = useCreateDockerDesktopClient();
+  return useCallback(() => client, [client]);
 }
 
 export interface DockerStats {
@@ -29,7 +30,7 @@ export function App() {
 
   useEffect(() => {
     let newData: DockerStats[] = [];
-    const result = ddClient.docker.cli.exec(
+    const result = ddClient().docker.cli.exec(
       "stats",
       ["--no-trunc", "--format", "{{ json . }}"],
       {
@@ -58,7 +59,7 @@ export function App() {
       result.close();
       newData = [];
     };
-  }, []);
+  }, [ddClient]);
 
   return (
     <>

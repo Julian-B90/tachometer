@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:18.15-buster AS client-builder
+FROM --platform=$BUILDPLATFORM node:18.16-buster-slim AS client-builder
 WORKDIR /ui
 # cache packages in layer
 COPY ui/package.json /ui/package.json
@@ -20,15 +20,7 @@ LABEL org.opencontainers.image.title="Tachometer" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
     com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
     com.docker.extension.additional-urls='[{"title":"Issues","url":"https://github.com/julian-b90/tachometer/issues"}]' \
-    com.docker.extension.changelog="### Added
-
-- add Changelog (#1)
-- better layout for the cardlist (#2)
-- optimize the table card style (#5)
-
-### Changed
-
-- upgradet dependencies" \
+    com.docker.extension.changelog="<p>### Changed</p><ul><li>add useMemo and useCallback to reduce rerender</li><li>resize the screenshot to reduce the size</li" \
     com.docker.extension.categories="development,utility-tools"
 
 COPY docker-compose.yaml .
