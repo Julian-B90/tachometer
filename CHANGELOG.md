@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 - add useMemo and useCallback to reduce rerender
 - resize the screenshot to reduce the size
-- upgradet dependencies @mui/material and @types/react
+- upgradet dependencies
 - use a smaller base docker image to reduze the size
 
 ## [0.0.4] - 2023-04-13
