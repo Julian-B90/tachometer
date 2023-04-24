@@ -14,7 +14,7 @@ FROM istio/distroless
 LABEL org.opencontainers.image.title="Tachometer" \
     org.opencontainers.image.description="Extension shows real-time cpu and memory usage of containers" \
     org.opencontainers.image.vendor="julian-b90" \
-    com.docker.extension.screenshots='[{"alt":"tachometer", "url":"https://raw.githubusercontent.com/julian-b90/tachometer/main/screenshot.png"}]' \
+    com.docker.extension.screenshots='[{"alt":"tachometer", "url":"https://raw.githubusercontent.com/julian-b90/tachometer/main/screenshot.png"}, {"alt":"details view", "url":"https://raw.githubusercontent.com/julian-b90/tachometer/main/screenshot_2.png"}]' \
     com.docker.desktop.extension.api.version="0.3.4" \
     com.docker.desktop.extension.icon="https://raw.githubusercontent.com/julian-b90/tachometer/main/speedometer.png" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \

@@ -2,8 +2,24 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import CssBaseline from "@mui/material/CssBaseline";
 import { DockerMuiThemeProvider } from "@docker/docker-mui-theme";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
 import { App } from './App';
+import { Details } from "./components/Details";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />
+  },
+  {
+    path: "/details/:id",
+    element: <Details />
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -14,7 +30,8 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     */}
     <DockerMuiThemeProvider>
       <CssBaseline />
-      <App />
+      <RouterProvider router={router} />
     </DockerMuiThemeProvider>
   </React.StrictMode>
 );
+
