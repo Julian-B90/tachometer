@@ -20,7 +20,7 @@ LABEL org.opencontainers.image.title="Tachometer" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
     com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
     com.docker.extension.additional-urls='[{"title":"Issues","url":"https://github.com/julian-b90/tachometer/issues"}]' \
-    com.docker.extension.changelog="<p>### Changed</p><ul><li>add useMemo and useCallback to reduce rerender</li><li>resize the screenshot to reduce the size</li" \
+    com.docker.extension.changelog="<p>### Added</p><ul><li>add details page</li><li>add empty state page</li></ul><p>### Changed</p><ul><li>add useMemo and useCallback to reduce rerender</li><li>resize the screenshot to reduce the size</li><li>upgradet dependencies</li><li>use a smaller base docker image to reduze the size</li></ul>" \
     com.docker.extension.categories="development,utility-tools"
 
 COPY docker-compose.yaml .
