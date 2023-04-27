@@ -4,9 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.0.6] - 2023-04-27
+
+### Fixed
+
+- used createMemoryRouter instead of createBrowserRouter (#9)
+
 ## [0.0.5] - 2023-04-24
 
-## Added
+### Added
 
 - add details page
 - add empty state page
