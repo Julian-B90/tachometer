@@ -11,7 +11,7 @@ export function App() {
       <Typography variant="h1" sx={{fontSize: spacing(2.875), mb: spacing(1.5)}}>
         Tachometer
       </Typography>
-      <Box>3 Shows real-time cpu and memory usage of containers</Box>
+      <Box>Shows real-time cpu and memory usage of containers</Box>
       {!stats && (
         <Stack
           sx={{ height: "100vh" }}
