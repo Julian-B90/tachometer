@@ -25,5 +25,5 @@ LABEL org.opencontainers.image.title="Tachometer" \
 
 COPY docker-compose.yaml .
 COPY metadata.json .
-COPY speedometer.png .
+COPY speedometer.svg .
 COPY --from=client-builder /ui/build ui
