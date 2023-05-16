@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.8] - 2023-05-16
+
+### Added
+
+- added Max CPU and Max Mem per session
+
+### Changed
+
+- upgradet dependencies
+
 ## [0.0.7] - 2023-05-03
 
 ### Changed
