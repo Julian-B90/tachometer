@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [0.0.9] - 2023-05-23
+
+### Added 
+
+- simple sorting
+
+### Changed 
+
+- some small refactoring
+
 ### Fixed
 
 - extract the Header to component and add it to detail page 
