@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Button, Stack } from "@mui/material";
+import { Box, Button, Stack, Typography } from "@mui/material";
 import {
   ChartLabel,
   HorizontalGridLines,
@@ -14,6 +14,7 @@ import {
 } from "react-vis";
 import "../../node_modules/react-vis/dist/style.css";
 import { DockerStats, useStats } from "../hook/useStats";
+import Head from "./Head";
 
 interface LineSeriesData {
   cpu: LineSeriesPoint[];
@@ -32,8 +33,8 @@ export function Details() {
       if (savedStats.length < 300) {
         setSavedStats([...savedStats, ...stats]);
       } else {
-        savedStats.splice(-1, 1);
-        setSavedStats([...stats, ...savedStats]);
+        savedStats.splice(1, 1);
+        setSavedStats([...savedStats, ...stats]);
       }
     }
   }, [stats]);
@@ -52,60 +53,68 @@ export function Details() {
 
   return (
     <>
-      <Button sx={{mb: 4}} component={Link} to={`/`}>Back</Button>
-      <Stack direction="row" spacing={4}>
-        <XYPlot width={300} height={300}>
-          <HorizontalGridLines />
-          <VerticalGridLines />
-          <XAxis />
-          <YAxis />
-          <ChartLabel
-            text="X Axis"
-            className="alt-x-label"
-            includeMargin={false}
-            xPercent={0.025}
-            yPercent={1.01}
-          />
+      <Head />
+      <Button sx={{ mb: 4 }} component={Link} to={`/`}>
+        Back
+      </Button>
+      <Stack direction="column" spacing={4}>
+        <Box>
+          <Typography variant="subtitle1">CPU usage</Typography>
+          <XYPlot width={450} height={300}>
+            <HorizontalGridLines />
+            <VerticalGridLines />
+            <XAxis />
+            <YAxis />
+            <ChartLabel
+              text="X Axis"
+              className="alt-x-label"
+              includeMargin={false}
+              xPercent={0.025}
+              yPercent={1.01}
+            />
+            <ChartLabel
+              text=""
+              className="alt-y-label"
+              includeMargin={false}
+              xPercent={0.05}
+              yPercent={0.1}
+              style={{
+                transform: "rotate(-90)",
+                textAnchor: "end",
+              }}
+            />
+            <LineSeries data={data?.cpu} strokeStyle="solid" />
+          </XYPlot>
+        </Box>
 
-          <ChartLabel
-            text="CPU"
-            className="alt-y-label"
-            includeMargin={false}
-            xPercent={0.05}
-            yPercent={0.1}
-            style={{
-              transform: 'rotate(-90)',
-              textAnchor: 'end'
-            }}
-          />
-          <LineSeries data={data?.cpu} strokeStyle="solid" />
-        </XYPlot>
-        <XYPlot width={300} height={300}>
-          <HorizontalGridLines />
-          <VerticalGridLines />
-          <XAxis />
-          <YAxis />
-          <ChartLabel
-            text="X Axis"
-            className="alt-x-label"
-            includeMargin={false}
-            xPercent={0.025}
-            yPercent={1.01}
-          />
-
-          <ChartLabel
-            text="Memory"
-            className="alt-y-label"
-            includeMargin={false}
-            xPercent={0.05}
-            yPercent={0.1}
-            style={{
-              transform: 'rotate(-90)',
-              textAnchor: 'end'
-            }}
-          />
-          <LineSeries data={data?.mem} strokeStyle="solid" />
-        </XYPlot>
+        <Box>
+          <Typography variant="subtitle1">Memory usage</Typography>
+          <XYPlot width={450} height={300}>
+            <HorizontalGridLines />
+            <VerticalGridLines />
+            <XAxis />
+            <YAxis />
+            <ChartLabel
+              text="X Axis"
+              className="alt-x-label"
+              includeMargin={false}
+              xPercent={0.025}
+              yPercent={1.01}
+            />
+            <ChartLabel
+              text=""
+              className="alt-y-label"
+              includeMargin={false}
+              xPercent={0.05}
+              yPercent={0.1}
+              style={{
+                transform: "rotate(-90)",
+                textAnchor: "end",
+              }}
+            />
+            <LineSeries data={data?.mem} strokeStyle="solid" />
+          </XYPlot>
+        </Box>
       </Stack>
     </>
   );

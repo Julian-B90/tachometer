@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Fixed
+
+- extract the Header to component and add it to detail page 
+
 ## [0.0.8] - 2023-05-16
 
 ### Added

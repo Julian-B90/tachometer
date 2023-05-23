@@ -1,17 +1,15 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import CardList from "./components/CardList";
 import { useStats } from "./hook/useStats";
+import Head from "./components/Head";
 
 export function App() {
   const stats = useStats();
-  const {spacing, palette} = useTheme();
+  const {spacing} = useTheme();
 
   return (
     <>
-      <Typography variant="h1" sx={{fontSize: spacing(2.875), mb: spacing(1.5)}}>
-        Tachometer
-      </Typography>
-      <Box>Shows real-time cpu and memory usage of containers</Box>
+      <Head />
       {!stats && (
         <Stack
           sx={{ height: "100vh" }}
@@ -31,7 +29,6 @@ export function App() {
           alignItems="start"
           justifyContent="center"
           spacing={2}
-          sx={{ mt: 3 }}
           useFlexGap
           flexWrap="wrap"
         >
