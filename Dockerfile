@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:18.16-buster-slim AS client-builder
+FROM --platform=$BUILDPLATFORM node:20.11.0-buster-slim AS client-builder
 WORKDIR /ui
 # cache packages in layer
 COPY ui/package.json /ui/package.json
