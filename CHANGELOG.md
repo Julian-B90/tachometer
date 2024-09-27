@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
+## [0.1.0] - 2024-09-27
+
+### Changed
+
+- update dependencies
+- update node to latest LTS 20.17.0
 
 ## [0.0.9] - 2023-05-23
 
