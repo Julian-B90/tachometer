@@ -20,7 +20,7 @@ LABEL org.opencontainers.image.title="Tachometer" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
     com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
     com.docker.extension.additional-urls='[{"title":"Issues","url":"https://github.com/julian-b90/tachometer/issues"}]' \
-    com.docker.extension.changelog="<p>V 0.1.0 <br /> ### Changed <ul><li>update dependencies</li><li>update node to latest LTS 20.17.0</li></ul></p>" \
+    com.docker.extension.changelog="<p>V 0.1.1 <br /> ### Changed <ul><li>update dependencies</li><li>update node to latest LTS 20.17.0</li></ul></p>" \
     com.docker.extension.categories="development,utility-tools"
 
 COPY docker-compose.yaml .
