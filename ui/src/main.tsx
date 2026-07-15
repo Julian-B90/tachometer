@@ -1,11 +1,19 @@
-import { DockerMuiThemeProvider } from "@docker/docker-mui-theme";
 import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 
 import { App } from "./App";
 import { Details } from "./components/Details";
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: { main: "#14b8a6" },
+    secondary: { main: "#38bdf8" },
+  },
+});
 
 const router = createMemoryRouter(
   [
@@ -26,14 +34,9 @@ const router = createMemoryRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    {/*
-      If you eject from MUI (which we don't recommend!), you should add
-      the `dockerDesktopTheme` class to your root <html> element to get
-      some minimal Docker theming.
-    */}
-    <DockerMuiThemeProvider>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <RouterProvider router={router} />
-    </DockerMuiThemeProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

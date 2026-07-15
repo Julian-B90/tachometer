@@ -1,54 +1,40 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { Box, Button, Stack, Typography } from "@mui/material";
 import {
-  ChartLabel,
-  HorizontalGridLines,
-  LineSeries,
-  LineSeriesPoint,
-  VerticalGridLines,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
-  XYPlot,
   YAxis,
-} from "react-vis";
-import "../../node_modules/react-vis/dist/style.css";
+} from "recharts";
 import { DockerStats, useStats } from "../hook/useStats";
 import Head from "./Head";
 
-interface LineSeriesData {
-  cpu: LineSeriesPoint[];
-  mem: LineSeriesPoint[];
-}
-
 export function Details() {
   const { id } = useParams();
-  const [data, setData] = useState<LineSeriesData>();
   const [savedStats, setSavedStats] = useState<DockerStats[]>([]);
 
   const stats = useStats(id);
 
   useEffect(() => {
-    if (savedStats && stats) {
-      if (savedStats.length < 300) {
-        setSavedStats([...savedStats, ...stats]);
-      } else {
-        savedStats.splice(1, 1);
-        setSavedStats([...savedStats, ...stats]);
-      }
+    if (stats) {
+      setSavedStats((previousStats) =>
+        [...previousStats, ...stats].slice(-300)
+      );
     }
   }, [stats]);
 
-  useEffect(() => {
-    const lineSeriesData: LineSeriesData = {
-      cpu: [],
-      mem: [],
-    };
-    savedStats.forEach((item, index) => {
-      lineSeriesData.cpu.push({ x: index, y: parseFloat(item.CPUPerc) });
-      lineSeriesData.mem.push({ x: index, y: parseFloat(item.MemPerc) });
-    });
-    setData(lineSeriesData);
+  const data = useMemo(() => {
+    return savedStats.map((item, index) => ({
+      sample: index + 1,
+      cpu: parseFloat(item.CPUPerc),
+      memory: parseFloat(item.MemPerc),
+    }));
   }, [savedStats]);
 
   return (
@@ -59,61 +45,48 @@ export function Details() {
       </Button>
       <Stack direction="column" spacing={4}>
         <Box>
-          <Typography variant="subtitle1">CPU usage</Typography>
-          <XYPlot width={450} height={300}>
-            <HorizontalGridLines />
-            <VerticalGridLines />
-            <XAxis />
-            <YAxis />
-            <ChartLabel
-              text="X Axis"
-              className="alt-x-label"
-              includeMargin={false}
-              xPercent={0.025}
-              yPercent={1.01}
-            />
-            <ChartLabel
-              text=""
-              className="alt-y-label"
-              includeMargin={false}
-              xPercent={0.05}
-              yPercent={0.1}
-              style={{
-                transform: "rotate(-90)",
-                textAnchor: "end",
-              }}
-            />
-            <LineSeries data={data?.cpu} strokeStyle="solid" />
-          </XYPlot>
-        </Box>
-
-        <Box>
-          <Typography variant="subtitle1">Memory usage</Typography>
-          <XYPlot width={450} height={300}>
-            <HorizontalGridLines />
-            <VerticalGridLines />
-            <XAxis />
-            <YAxis />
-            <ChartLabel
-              text="X Axis"
-              className="alt-x-label"
-              includeMargin={false}
-              xPercent={0.025}
-              yPercent={1.01}
-            />
-            <ChartLabel
-              text=""
-              className="alt-y-label"
-              includeMargin={false}
-              xPercent={0.05}
-              yPercent={0.1}
-              style={{
-                transform: "rotate(-90)",
-                textAnchor: "end",
-              }}
-            />
-            <LineSeries data={data?.mem} strokeStyle="solid" />
-          </XYPlot>
+          <Typography variant="subtitle1" gutterBottom>
+            Container usage over time
+          </Typography>
+          <Box
+            aria-label="Line chart showing CPU and memory usage over time"
+            role="img"
+            sx={{ height: 320, maxWidth: 720, width: "100%" }}
+          >
+            <ResponsiveContainer>
+              <LineChart data={data} margin={{ top: 8, right: 24, left: 0, bottom: 8 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="sample" label={{ value: "Sample", position: "insideBottom", offset: -4 }} />
+                <YAxis unit="%" domain={[0, "auto"]} />
+                <Tooltip
+                  formatter={(value) => {
+                    const numericValue = Array.isArray(value) ? value[0] : value;
+                    return `${Number(numericValue).toFixed(2)}%`;
+                  }}
+                />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="cpu"
+                  name="CPU"
+                  stroke="#14b8a6"
+                  strokeWidth={2}
+                  dot={false}
+                  isAnimationActive={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="memory"
+                  name="Memory"
+                  stroke="#38bdf8"
+                  strokeDasharray="6 3"
+                  strokeWidth={2}
+                  dot={false}
+                  isAnimationActive={false}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </Box>
         </Box>
       </Stack>
     </>

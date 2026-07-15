@@ -24,10 +24,8 @@ export function App() {
       <Head />
       {!stats && (
         <Stack
-          sx={{ height: "100vh" }}
+          sx={{ height: "100vh", alignItems: "center", justifyContent: "center" }}
           direction="column"
-          alignItems="center"
-          justifyContent="center"
         >
           <Typography variant="h2" sx={{ mb: 2, fontSize: spacing(2) }}>
             No containers running
@@ -44,11 +42,9 @@ export function App() {
           </Tooltip>
           <Stack
             direction="row"
-            alignItems="start"
-            justifyContent="center"
             spacing={2}
             useFlexGap
-            flexWrap="wrap"
+            sx={{ alignItems: "flex-start", flexWrap: "wrap", justifyContent: "center" }}
           >
             <CardList dockerStats={stats} />
           </Stack>
