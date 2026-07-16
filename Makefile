@@ -1,5 +1,5 @@
 IMAGE?=julianb90/tachometer
-TAG?=0.2.0
+TAG?=0.2.2
 
 BUILDER=buildx-multi-arch
 

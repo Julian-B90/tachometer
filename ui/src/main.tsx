@@ -1,19 +1,13 @@
 import CssBaseline from "@mui/material/CssBaseline";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import { DockerMuiV6ThemeProvider } from "@docker/docker-mui-theme";
 
 import { App } from "./App";
 import { Details } from "./components/Details";
-
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: { main: "#14b8a6" },
-    secondary: { main: "#38bdf8" },
-  },
-});
+import { Logs } from "./components/Logs";
+import { AutoThemeProvider } from "./components/AutoThemeProvider";
 
 const router = createMemoryRouter(
   [
@@ -25,6 +19,10 @@ const router = createMemoryRouter(
       path: "/details/:id",
       element: <Details />,
     },
+    {
+      path: "/logs/:id",
+      element: <Logs />,
+    },
   ],
   {
     initialEntries: ["/"],
@@ -34,9 +32,11 @@ const router = createMemoryRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <DockerMuiV6ThemeProvider>
+      <AutoThemeProvider>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </AutoThemeProvider>
+    </DockerMuiV6ThemeProvider>
   </React.StrictMode>
 );

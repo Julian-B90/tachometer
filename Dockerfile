@@ -15,12 +15,12 @@ LABEL org.opencontainers.image.title="Tachometer" \
     org.opencontainers.image.description="Extension shows real-time cpu and memory usage of containers" \
     org.opencontainers.image.vendor="julian-b90" \
     com.docker.extension.screenshots='[{"alt":"tachometer", "url":"https://raw.githubusercontent.com/julian-b90/tachometer/main/screenshot.png"}, {"alt":"details view", "url":"https://raw.githubusercontent.com/julian-b90/tachometer/main/screenshot_2.png"}]' \
-    com.docker.desktop.extension.api.version="0.3.4" \
+    com.docker.desktop.extension.api.version="0.4.2" \
     com.docker.desktop.extension.icon="https://raw.githubusercontent.com/julian-b90/tachometer/main/speedometer.png" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
     com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
     com.docker.extension.additional-urls='[{"title":"Issues","url":"https://github.com/julian-b90/tachometer/issues"}]' \
-    com.docker.extension.changelog="<p>V 0.2.0 <br /> ### Changed <ul><li>update dependencies</li><li>update node to latest LTS 24.18.0</li></ul></p>" \
+    com.docker.extension.changelog="<p>V 0.2.2 <br /> <h4>Added</h4><ul><li>Network I/O and Block I/O charts</li><li>Container actions: stop, restart, pause, resume</li><li>Search/filter containers by name</li><li>Auto theme detection with manual toggle</li><li>Aggregate stats banner</li><li>Visual threshold warning at 90%</li><li>Historical data persistence</li><li>Live/history toggle on detail page</li><li>Container grouping by Docker Compose project</li><li>Log viewer page</li></ul><h4>Fixed</h4><ul><li>Removed debug console.log statements</li><li>Fixed container labels fetch</li></ul></p>" \
     com.docker.extension.categories="development,utility-tools"
 
 COPY docker-compose.yaml .

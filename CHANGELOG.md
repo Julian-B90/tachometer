@@ -4,6 +4,31 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.2.2] - 2026-07-16
+
+### Added
+
+- Network I/O and Block I/O charts on detail page
+- Container actions: stop, restart, pause, resume buttons
+- Search/filter containers by name
+- Auto theme detection (dark/light) with manual toggle
+- Aggregate stats banner (total CPU/memory, container count)
+- Visual threshold warning (red border when CPU/memory > 90%)
+- Historical data persistence (localStorage, up to 2000 entries)
+- Live/history toggle on detail page
+- Container grouping by Docker Compose project
+- Log viewer page (`/logs/:id`) with streaming output
+
+### Changed
+
+- Sort now creates a copy before sorting (immutable)
+- Improved card layout with action buttons
+
+### Fixed
+
+- Removed debug console.log statements
+- Fixed container labels fetch using `docker inspect`
+
 ## [0.1.1] - 2024-09-27
 
 ### Changed

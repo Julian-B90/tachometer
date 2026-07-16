@@ -26,7 +26,7 @@ export const useStats = (container?: string) => {
     const ddClient = useDockerDesktopClient();
 
     useEffect(() => {
-        let newData: DockerStats[] = [];
+        let buffer = "";
 
         const options = ["--no-trunc", "--format", "{{ json . }}"];
 
@@ -43,25 +43,28 @@ export const useStats = (container?: string) => {
                 console.error("error", error);
               },
               onOutput(data) {
-                if (data.stdout?.includes("[2J[H")) {
-                  setResponse(newData);
-                  newData = [];
-                  newData.push(
-                    JSON.parse(data.stdout.replace("[2J[H", "").replace("\x1B", ""))
-                  );
-                } else {
-                  newData.push(JSON.parse(data.stdout ?? ""));
+                buffer += data.stdout ?? "";
+                const ansiRegex = /\x1b\[[0-9;]*[a-zA-Z]/g;
+                const cleaned = buffer.replace(ansiRegex, "");
+                const lines = cleaned.split("\n");
+                buffer = lines.pop() ?? "";
+                const parsed: DockerStats[] = [];
+                for (const line of lines) {
+                  const trimmed = line.trim();
+                  if (trimmed) {
+                    parsed.push(JSON.parse(trimmed));
+                  }
+                }
+                if (parsed.length > 0) {
+                  setResponse(parsed);
                 }
               },
-              splitOutputLines: true,
             },
           }
         );
     
         return () => {
-          console.debug("Clean up!");
           result.close();
-          newData = [];
         };
       }, [ddClient, container]);
 
