@@ -1,11 +1,13 @@
-import { DockerMuiThemeProvider } from "@docker/docker-mui-theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
+import { DockerMuiV6ThemeProvider } from "@docker/docker-mui-theme";
 
 import { App } from "./App";
 import { Details } from "./components/Details";
+import { Logs } from "./components/Logs";
+import { AutoThemeProvider } from "./components/AutoThemeProvider";
 
 const router = createMemoryRouter(
   [
@@ -17,6 +19,10 @@ const router = createMemoryRouter(
       path: "/details/:id",
       element: <Details />,
     },
+    {
+      path: "/logs/:id",
+      element: <Logs />,
+    },
   ],
   {
     initialEntries: ["/"],
@@ -26,14 +32,11 @@ const router = createMemoryRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    {/*
-      If you eject from MUI (which we don't recommend!), you should add
-      the `dockerDesktopTheme` class to your root <html> element to get
-      some minimal Docker theming.
-    */}
-    <DockerMuiThemeProvider>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </DockerMuiThemeProvider>
+    <DockerMuiV6ThemeProvider>
+      <AutoThemeProvider>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </AutoThemeProvider>
+    </DockerMuiV6ThemeProvider>
   </React.StrictMode>
 );
