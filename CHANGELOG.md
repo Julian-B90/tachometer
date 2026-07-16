@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 
 - update dependencies
-- update node to latest LTS 20.17.0
+- update node to latest LTS 24.18.0
 
 ## [0.0.9] - 2023-05-23
 
