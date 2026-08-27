@@ -20,7 +20,7 @@ LABEL org.opencontainers.image.title="Tachometer" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
     com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
     com.docker.extension.additional-urls='[{"title":"Issues","url":"https://github.com/julian-b90/tachometer/issues"}]' \
-    com.docker.extension.changelog="<p>V 0.2.2 <br /> <h4>Added</h4><ul><li>Network I/O and Block I/O charts</li><li>Container actions: stop, restart, pause, resume</li><li>Search/filter containers by name</li><li>Auto theme detection with manual toggle</li><li>Aggregate stats banner</li><li>Visual threshold warning at 90%</li><li>Historical data persistence</li><li>Live/history toggle on detail page</li><li>Container grouping by Docker Compose project</li><li>Log viewer page</li></ul><h4>Fixed</h4><ul><li>Removed debug console.log statements</li><li>Fixed container labels fetch</li></ul></p>" \
+    com.docker.extension.changelog="<p>V 0.2.6 <br /> <h4>Changed</h4><ul><li>Updated react and react-dom to 19.2.8</li><li>Updated react-router-dom to 7.18.2</li><li>Updated recharts to 3.10.1</li><li>Updated vite to 8.2.2</li><li>Updated TypeScript type definitions</li></ul></p>" \
     com.docker.extension.categories="development,utility-tools"
 
 COPY docker-compose.yaml .

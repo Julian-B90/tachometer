@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [0.2.6] - 2026-08-27
+
+### Changed
+
+- Updated react and react-dom to 19.2.8
+- Updated react-router-dom to 7.18.2
+- Updated recharts to 3.10.1
+- Updated vite to 8.2.2
+- Updated TypeScript type definitions (@types/node, @types/react, @types/react-dom)
+
 ## [0.2.2] - 2026-07-16
 
 ### Added
