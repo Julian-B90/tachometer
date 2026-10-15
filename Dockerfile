@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM node:24.18.0-bookworm-slim AS client-builder
+FROM --platform=$BUILDPLATFORM node:24.22.0-bookworm-slim AS client-builder
 WORKDIR /ui
 # cache packages in layer
 COPY ui/package.json /ui/package.json
@@ -20,7 +20,7 @@ LABEL org.opencontainers.image.title="Tachometer" \
     com.docker.extension.detailed-description="Extension shows real-time cpu and memory usage of containers" \
     com.docker.extension.publisher-url="https://github.com/julian-b90/tachometer" \
     com.docker.extension.additional-urls='[{"title":"Issues","url":"https://github.com/julian-b90/tachometer/issues"}]' \
-    com.docker.extension.changelog="<p>V 0.2.6 <br /> <h4>Changed</h4><ul><li>Updated react and react-dom to 19.2.8</li><li>Updated react-router-dom to 7.18.2</li><li>Updated recharts to 3.10.1</li><li>Updated vite to 8.2.2</li><li>Updated TypeScript type definitions</li></ul></p>" \
+    com.docker.extension.changelog="<p>V 0.2.7 <br /> <h4>Changed</h4><ul><li>Updated react and react-dom to 19.3.0</li><li>Updated react-router-dom to 7.18.4</li><li>Updated vite to 8.3.4</li><li>Updated TypeScript type definitions</li><li>Updated node to 24.22.0</li></ul></p>" \
     com.docker.extension.categories="development,utility-tools"
 
 COPY docker-compose.yaml .
